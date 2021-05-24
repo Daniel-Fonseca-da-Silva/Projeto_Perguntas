@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import './questao.dart';
 
 main() => runApp(new PerguntaApp()); // Inícia a aplicação
 
-// Classe que gerencia o estado
-class PerguntaAppState extends State<PerguntaApp> {
+// Classe privada que gerencia o estado
+class _PerguntaAppState extends State<PerguntaApp> {
 
-  // Variável
-  var perguntaSelecionada = 0;
+  // Variável privada
+  var _perguntaSelecionada = 0;
 
-  // Metódo
-  void responder() 
+  // Metódo privado
+  void _responder() 
   {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     }); 
-    print(perguntaSelecionada);
+    print(_perguntaSelecionada);
   }
 
   // Metódo build
@@ -33,18 +34,18 @@ class PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: [
-            Text(perguntas[perguntaSelecionada]),
+            Questao(perguntas[_perguntaSelecionada]),
             ElevatedButton(
               child: Text('Resposta 1'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
             ElevatedButton(
               child: Text('Resposta 2'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
             ElevatedButton(
               child: Text('Resposta 3'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
           ],
         ),
@@ -57,10 +58,10 @@ class PerguntaAppState extends State<PerguntaApp> {
 // Classe
 class PerguntaApp extends StatefulWidget {
 
-  // Metódo para criar estado
-  PerguntaAppState createState()
+  // Metódo privado para criar estado
+  _PerguntaAppState createState()
   {
-    return PerguntaAppState();
+    return _PerguntaAppState();
   }
 
 }
