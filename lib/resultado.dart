@@ -4,8 +4,11 @@ class Resultado extends StatelessWidget {
 // Variável
   final int pontuacao;
 
+// Função
+  final void Function() quandoReiniciarQuestionario;
+
 // Construtor
-  Resultado(this.pontuacao);
+  Resultado(this.pontuacao, this.quandoReiniciarQuestionario);
 
 // Metódo get que retorna string
   String get fraseResultado {
@@ -22,10 +25,23 @@ class Resultado extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-      fraseResultado,
-      style: TextStyle(fontSize: 28),
-    ));
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(
+            child: Text(
+          fraseResultado,
+          style: TextStyle(fontSize: 28),
+        )
+        ),
+        ElevatedButton(
+          child: Text('Reiniciar'),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blue
+          ),
+          onPressed: quandoReiniciarQuestionario,
+        ),
+      ],
+    );
   }
 }
